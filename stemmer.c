@@ -38,7 +38,7 @@ PHP_FUNCTION(stemword)
 {
     zval *lang, *enc, *arg;
     
-    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "zzz", &arg,&lang,&enc) == FAILURE)RETURN_NULL();
+    if (zend_parse_parameters(ZEND_NUM_ARGS(), "zzz", &arg,&lang,&enc) == FAILURE)RETURN_NULL();
       
     convert_to_string(lang);
     convert_to_string(enc);
