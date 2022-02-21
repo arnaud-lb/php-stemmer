@@ -5,18 +5,18 @@
 #include "php.h"
 #include "php_stemmer.h"
 #include "libstemmer_c/include/libstemmer.h"
-
-static zend_function_entry stemmer_functions[] = {
-    PHP_FE(stemword, NULL)
-    {NULL, NULL, NULL}
-};
+#if PHP_VERSION_ID < 80000
+#include "stemmer_legacy_arginfo.h"
+#else
+#include "stemmer_arginfo.h"
+#endif
 
 zend_module_entry stemmer_module_entry = {
 #if ZEND_MODULE_API_NO >= 20010901
     STANDARD_MODULE_HEADER,
 #endif
     PHP_STEMMER_EXTNAME,
-    stemmer_functions,
+    ext_functions,
     NULL,
     NULL,
     NULL,
